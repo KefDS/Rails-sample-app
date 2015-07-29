@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample App!" # Banners que salen por un periodo de tiempo
+      log_in(@user) # Inicia la sessión inmediatamente
+      flash[:success] = "Welcome to the Sample App!"
       redirect_to user_url(@user)
     else
       render 'new' # Vuelve a el formulario
