@@ -4,11 +4,11 @@
 <!-- gem for paginate, in @users controller do not use `User.all`, instead use `User.page(params[:page])` -->
 <%= will_paginate @users %>
 <ul class="users">
-	<% @users.each do |user| %>
-	<li>
-		<%= gravatar_for user %>
-		<%= link_to user.name, user %>
-	</li>
-	<% end %>
+	<!-- <% @users.each do |user| %>
+		<%= render user %> With this Rails look for a partial call _user.html.erb
+	<% end %> -->
+
+	<!-- Reduce way,  Rails look for a partial call _user.html.erb-->
+	<%= render @users %>
 </ul>
 <%= will_paginate %>
