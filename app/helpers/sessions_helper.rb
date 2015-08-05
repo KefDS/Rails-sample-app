@@ -6,8 +6,7 @@ module SessionsHelper
 
 	# Returns the current logged-in user (if any).
 	def current_user
-		# Solo con session
-		# @current_user ||= User.find_by(id: session[:user_id])
+		# Solo con session: @current_user ||= User.find_by(id: session[:user_id])
 		if user_id = session[:user_id]
 			@current_user ||= User.find_by(id: user_id)
 		elsif user_id = cookies.signed[:user_id]
@@ -17,6 +16,11 @@ module SessionsHelper
 				@current_user = user
 			end
 		end
+	end
+
+	# Returns true if the given user is the current user.
+	def current_user?(user)
+		user == current_user
 	end
 
 	# Returns true if the user is logged in, false otherwise.
@@ -43,6 +47,17 @@ module SessionsHelper
 		user.forget
 		cookies.delete(:user_id)
 		cookies.delete(:remember_token)
+	end
+
+	# Redirects to stored location (or to the default).
+	def redirect_back_or(default)
+		redirect_to(session[:forwarding_url] || default)
+		session.delete(:forwarding_url)
+	end
+
+	# Stores the URL trying to be accessed.
+	def store_location
+		session[:forwarding_url] = request.url if request.get?
 	end
 
 end
