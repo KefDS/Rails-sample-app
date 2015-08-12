@@ -58,4 +58,13 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to(root_url)
   end
 
+  test "should not allow admin attrribute to be edited via the web" do
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+    patch :update, id: @other_user, user: {  password: 'password',
+                                            password_confirmation: 'password',
+                                            admin: true }
+    assert_not @other_user.reload.admin?
+  end
+
 end
