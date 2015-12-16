@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   # Se ejecuta antes de llamar a todos los métodos o métodos descritos en only:
   before_action :logged_in_user, only:  [:index, :edit, :update, :destroy]
   before_action :correct_user, only:    [:edit, :update]
