@@ -29,6 +29,10 @@ gem 'bcrypt'
 # Gem for create semi-realistic users for test
 gem 'faker'
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 # Pagining (show x number of profiles per page)
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
