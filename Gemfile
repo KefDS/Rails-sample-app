@@ -29,6 +29,7 @@ gem 'bcrypt'
 # Gem for create semi-realistic users for test
 gem 'faker'
 
+# Image
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
