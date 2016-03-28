@@ -1,0 +1,15 @@
+one:
+  follower: user_example
+  followed: kimy
+
+two:
+  follower: user_example
+  followed: malory
+
+three:
+  follower: kimy
+  followed: user_example
+
+four:
+  follower: dinky
+  followed: user_example
